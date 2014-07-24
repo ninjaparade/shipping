@@ -306,6 +306,36 @@ return [
 			'shipping' => ['name' => 'Shipping'],
 			'shipping::general' => ['name' => 'General'],
 			
+			
+
+			'shipping::general.local_pickup_text' => [
+				'name'    => 'Local Pickup Text',
+				'config'  => 'ninjaparade/shipping::local_pickup_text',
+				'info'    => 'Local Pickup Text',
+				'type'    => 'input'
+			],
+
+			'shipping::general.local_shipping_text' => [
+				'name'    => 'Local Shipping Text',
+				'config'  => 'ninjaparade/shipping::local_shipping_text',
+				'info'    => 'Local Shipping Text',
+				'type'    => 'input'
+			],
+
+			'shipping::general.regular_shipping_text' => [
+				'name'    => 'Regular Shipping Text',
+				'config'  => 'ninjaparade/shipping::regular_shipping_text',
+				'info'    => 'Regular Shipping Text',
+				'type'    => 'input'
+			],
+
+			'shipping::general.express_shipping_text' => [
+				'name'    => 'Express Shipping Text',
+				'config'  => 'ninjaparade/shipping::express_shipping_text',
+				'info'    => 'Express Shipping Text',
+				'type'    => 'input'
+			],
+
 			'shipping::general.local_pickup' => [
 				'name'    => 'Local Pickup Charge',
 				'config'  => 'ninjaparade/shipping::local_pickup',
