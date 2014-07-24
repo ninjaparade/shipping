@@ -167,6 +167,23 @@ class DbZipcodeRepository implements ZipcodeRepositoryInterface {
         return number_format(($packages - 1) * $next + $first, 2);
 	}
 
+	public function isLocal($zip)
+	{
+        $post_zip = str_replace('-', '', $zip);
+		
+		$local = $this->createModel()->where('zip', 'LIKE', '%'.strtoupper($post_zip).'%')->first();
+		
+		if(count($local))
+		{
+			
+			return true;
+		}else{
+			
+			return false;
+		}
+		
+	}
+
 	/**
 	 * Create a new instance of the model.
 	 *
