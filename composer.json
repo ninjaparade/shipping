@@ -1,0 +1,32 @@
+{
+	"name": "ninjaparade/shipping",
+	"type": "platform-extension",
+	"description": "Shipping extension to handle shipping costs and options",
+	"authors": [
+		{
+			"name": "Ninja",
+			"email": "ninja@ninjaparade.ca"
+		}
+	],
+	"repositories": [
+		{
+			"type": "composer",
+			"url": "http://packages.cartalyst.com"
+		}
+	],
+	"require": {
+		"php": ">=5.4.0",
+		"cartalyst/composer-installers": "1.1.*",
+		"illuminate/support": "~4.2"
+	},
+	"autoload": {
+		"classmap": [
+			"database/migrations",
+			"database/seeds"
+		],
+		"psr-4": {
+			"Ninjaparade\\Shipping\\": "src/"
+		}
+	},
+	"minimum-stability": "dev"
+}
