@@ -164,8 +164,8 @@ class DbZipcodeRepository implements ZipcodeRepositoryInterface {
         }else{
 
             $options = array(
-				array('value'  =>  $this->getRate($packages, false), 'type' => $this->config['regular_shipping_text'] ),
-				array('value'  =>  $this->getRate($packages, true), 'type' => $this->config['express_shipping_text'] ),
+            	array('value'  =>  $this->getRate($packages, false), 'type' => $this->config['regular_shipping_text'] ),
+            	array('value'  =>  $this->getRate($packages, true), 'type' => $this->config['express_shipping_text'] ),
             );   
 
         }
