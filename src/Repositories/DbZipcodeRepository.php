@@ -179,12 +179,12 @@ class DbZipcodeRepository implements ZipcodeRepositoryInterface {
         {
         	
         	$first = $this->config['express_shipping_first_item'];
-        	$next = $this->config['express_shipping_per_item'];
+        	$next  = $this->config['express_shipping_per_item'];
         	
         }else{
 
         	$first = $this->config['regular_shipping_first_item'];
-        	$next = $this->config['regular_shipping_per_item'];
+        	$next  = $this->config['regular_shipping_per_item'];
             
         }
 
