@@ -46,8 +46,7 @@ class ZipCodeTableSeeder {
             	);
 
         		Log::info("created " . $row['city']. " " .$row['zip']);
-			}
-        		
+			}		
         }
 
         Log::info("Done inserting ". count($areas). ' rows');
