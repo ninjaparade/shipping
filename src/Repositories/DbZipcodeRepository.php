@@ -149,6 +149,30 @@ class DbZipcodeRepository implements ZipcodeRepositoryInterface {
 	}
 
 
+	public function shippingOptions($zip, $packages)
+	{
+		 $local = $this->isLocal($zip);
+
+
+		if($local)
+        {
+            $options = array(
+                array('value' => $this->config['local_pickup'], 	'type' => $this->config['local_pickup_text'] ),
+                array('value' => $this->config['local_shipping'], 	'type' => $this->config['local_shipping_text'] )
+            );    
+
+        }else{
+
+            $options = array(
+				array('value'  =>  $this->getRate($packages, false), 'type' => $this->config['regular_shipping_text'] ),
+				array('value'  =>  $this->getRate($packages, true), 'type' => $this->config['express_shipping_text'] ),
+            );   
+
+        }
+
+        return $options;
+	}	
+
 	public function getRate($packages, $express = true)
 	{  
         if($express)
