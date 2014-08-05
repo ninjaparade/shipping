@@ -2,59 +2,60 @@
 
 use DB;
 use Log;
+use Str;
 // use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
 use \Ninjaparade\Shipping\Models\Zipcode as Model;
 
 class ZipCodeTableSeeder {
 
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
 
-		// DB::table('zipcodes')->truncate();
+        // DB::table('zipcodes')->truncate();
 
-		$csvFile = __DIR__.'/zips.csv';
-			
-		$areas = $this->csv_to_array($csvFile);
+        $csvFile = __DIR__.'/zips.csv';
+            
+        $areas = $this->csv_to_array($csvFile);
 
-	
-		foreach($areas as $row)
+    
+        foreach($areas as $row)
         {
-        	
-        	$zip = Model::where('zip' , '=', $row['zip'])->first();
-        	
-        	if(!count($zip))
-        	{
-        		Log::info("Inserting new recored");
+            
+            $zip = Model::where('zip' , '=', $row['zip'])->first();
+            
+            if(!count($zip))
+            {
+                Log::info("Inserting new recored");
 
                 $city  = Str::title($row['city'] );
 
-        		Zipcode::create(
-        			array(
-            			'city' => $city,
-            			'zip' => Str::upper(str_replace(' ', '', $row['zip'] ) ),
-            			'state' => 'BC',
-            			'country' => 'Canada',
-            			'updated_at' => new DateTime,
-            			'created_at' => new DateTime,
-            		)
-            	);
+                Model::create(
+                    array(
+                        'city' => $city,
+                        'zip' => Str::upper(str_replace(' ', '', $row['zip'] ) ),
+                        'state' => 'BC',
+                        'country' => 'Canada',
+                        'updated_at' => new DateTime,
+                        'created_at' => new DateTime,
+                    )
+                );
 
-        		Log::info("created " . $row['city']. " " .$row['zip']);
-			}		
+                Log::info("created " . $row['city']. " " .$row['zip']);
+            }       
         }
 
         Log::info("Done inserting ". count($areas). ' rows');
-		
+        
 
-	}
+    }
 
-	public function csv_to_array($filename='', $delimiter=',')
+    public function csv_to_array($filename='', $delimiter=',')
     {
         if(!file_exists($filename) || !is_readable($filename))
             return FALSE;
